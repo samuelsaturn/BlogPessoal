@@ -27,8 +27,8 @@ public class UsuarioRepositoryTest {
 		repository.deleteAll();
 		
 		repository.save(new Usuario(0L, "Samuel Mathias", "samuel@gmail.com", "123456"));
-		repository.save(new Usuario(0L, "Taldo Ricardo", "taldo@gmail.com", "123456"));
-		repository.save(new Usuario(0L, "Laura Sauro", "lauro@gmail.com", "123456"));
+		repository.save(new Usuario(0L, "Taldo Mathias", "taldo@gmail.com", "123456"));
+		repository.save(new Usuario(0L, "Laura Mathias", "lauro@gmail.com", "123456"));
 		repository.save(new Usuario(0L, "Rebecca Silva", "rebecca@gmail.com", "123456"));
 		
 	}
@@ -47,10 +47,11 @@ public class UsuarioRepositoryTest {
     public void deveRetornarTresUsuarios() {
     	
     	List<Usuario> listaDeUsuarios =  repository.findAllByNomeContainingIgnoreCase("Mathias");
+    	
     	assertEquals(3, listaDeUsuarios.size());
     	assertTrue(listaDeUsuarios.get(0).getNome().equals("Samuel Mathias"));
-    	assertTrue(listaDeUsuarios.get(1).getNome().equals("Taldo Ricardo"));
-    	assertTrue(listaDeUsuarios.get(2).getNome().equals("Laura Sauro"));
+    	assertTrue(listaDeUsuarios.get(1).getNome().equals("Taldo Mathias"));
+    	assertTrue(listaDeUsuarios.get(2).getNome().equals("Laura Mathias"));
     }
 
 }

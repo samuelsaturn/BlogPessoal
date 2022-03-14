@@ -19,16 +19,15 @@ public class Tema {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
-	@NotNull
+	private Long id;
+
+	@NotNull(message = "O atributo Descrição é obrigatório")
 	private String descricao;
-	
-	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy = "tema", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tema")
 	private List<Postagem> postagem;
-	
-	
+
 
 	public long getId() {
 		return id;
@@ -53,7 +52,4 @@ public class Tema {
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
 	}
-	
-	
-
 }

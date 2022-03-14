@@ -44,7 +44,7 @@ public class UsuarioControllerTest {
 	@DisplayName("Cadastrar Um Usuário")
 	public void deveCriarUmUsuario() {
 		
-		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(new Usuario(0L, "Rebecca Silva", "rebecca@gmail.com", "123456"));
+		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(new Usuario(0L, "Rebecca Silva","foto", "rebecca@gmail.com", "123456"));
 		
 		ResponseEntity<Usuario> resposta = testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST, requisicao, Usuario.class);
 		
@@ -58,9 +58,9 @@ public class UsuarioControllerTest {
 	@DisplayName("Não deve permitir duplicação de Usuários")
 	public void naoDeveDuplicarUsuarios() {
 		
-		usuarioService.CadastrarUsuario(new Usuario(0L, "Maria da Silva", "maria@gmail.com", "123456"));
+		usuarioService.cadastrarUsuario(new Usuario(0L, "Rebecca Silva","foto", "rebecca@gmail.com", "123456"));
 		
-		HttpEntity<Usuario> requisicao = new HttpEntity<>(new Usuario(0L, "Maria da Silva", "maria@gmail.com", "123456"));
+		HttpEntity<Usuario> requisicao = new HttpEntity<>(new Usuario(0L, "Rebecca Silva","foto", "rebecca@gmail.com", "123456"));
 		
 		ResponseEntity<Usuario> resposta = testRestTemplate
 				.exchange("/usuarios/cadastrar", HttpMethod.POST, requisicao, Usuario.class);
@@ -72,9 +72,9 @@ public class UsuarioControllerTest {
 	@Order(3)
 	@DisplayName("Alterar um usuario")
 	public void deveAtualizarUmUsuario() {
-		Optional<Usuario> usuarioCreate = usuarioService.CadastrarUsuario(new Usuario (0L, "Juliana Andrews", "juliana@email.com.br", "juliana123"));
+		Optional<Usuario> usuarioCreate = usuarioService.cadastrarUsuario(new Usuario (0L, "Juliana Andrews", "foto", "juliana@email.com.br", "juliana123"));
 		Usuario usuarioUpdate = new Usuario(usuarioCreate.get().getId(),
-				"Juliana Andrws Ramos", "juliana_ramos@email.com", "juliana123");
+				"Juliana Andrews Ramos", "foto", "juliana_ramos@email.com", "juliana123");
 		
 		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(usuarioUpdate);
 		
@@ -91,10 +91,10 @@ public class UsuarioControllerTest {
 	@Order(4)
 	@DisplayName("Listar todos as Postagens")
 	public void deveMostrarTodasPostagens() {
-		usuarioService.CadastrarUsuario(new Usuario(0L, "Sabrina Sanches", "sabrina@email.com", 
+		usuarioService.cadastrarUsuario(new Usuario(0L, "Sabrina Sanches", "foto", "sabrina@email.com", 
 				"sabrina123"));			
 		
-		usuarioService.CadastrarUsuario(new Usuario (0L, "Ricardo Marques", "ricardo@email.com","ricardo123"));
+		usuarioService.cadastrarUsuario(new Usuario (0L, "Ricardo Marques", "foto", "ricardo@email.com","ricardo123"));
 		
 		ResponseEntity<String> resposta = testRestTemplate
 				.withBasicAuth("sabrina@email.com", "sabrina123")

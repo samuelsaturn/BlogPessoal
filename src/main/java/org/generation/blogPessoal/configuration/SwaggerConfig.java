@@ -33,31 +33,23 @@ public class SwaggerConfig {
 					.description("Meu Github")
 					.url("https://github.com/samuelsaturn"));
 	}
+	
+	private ApiResponse createApiResponse(String message) {
+		return new ApiResponse().description(message);
+	}
 
 	@Bean
-	public OpenApiCustomiser customerGlobalHeaderOpenApiCustomiser() {
-
+	public OpenApiCustomiser customerGlobalResponseStatus() {
 		return openApi -> {
 			openApi.getPaths().values().forEach(pathItem -> pathItem.readOperations().forEach(operation -> {
+				ApiResponses api = operation.getResponses();
 
-				ApiResponses apiResponses = operation.getResponses();
-
-				apiResponses.addApiResponse("200", createApiResponse("Sucesso!"));
-				apiResponses.addApiResponse("201", createApiResponse("Objeto Persistido!"));
-				apiResponses.addApiResponse("204", createApiResponse("Objeto Excluído!"));
-				apiResponses.addApiResponse("400", createApiResponse("Erro na Requisição!"));
-				apiResponses.addApiResponse("401", createApiResponse("Acesso Não Autorizado!"));
-				apiResponses.addApiResponse("404", createApiResponse("Objeto Não Encontrado!"));
-				apiResponses.addApiResponse("500", createApiResponse("Erro na Aplicação!"));
-
+				api.addApiResponse("200", createApiResponse("Sucess!"));
+				api.addApiResponse("201", createApiResponse("Created!"));
+				api.addApiResponse("400", createApiResponse("Request error!"));
+				api.addApiResponse("401", createApiResponse("Not authorized!"));
+				api.addApiResponse("500", createApiResponse("Internal server Error!"));
 			}));
 		};
 	}
-
-	private ApiResponse createApiResponse(String message) {
-
-		return new ApiResponse().description(message);
-
-	}
-	
 }

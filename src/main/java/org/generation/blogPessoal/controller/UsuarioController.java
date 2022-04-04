@@ -84,6 +84,4 @@ public class UsuarioController {
 					throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id Não Existe");
 				});
 	}
-	
-
 }

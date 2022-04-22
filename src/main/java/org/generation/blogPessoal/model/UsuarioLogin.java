@@ -5,6 +5,8 @@ public class UsuarioLogin {
 
 	private String nome;
 
+	private String biografia;
+
 	private String usuario;
 
 	private String foto;
@@ -73,6 +75,12 @@ public class UsuarioLogin {
 		this.tipo = tipo;
 	}
 
-	
+	public String getBiografia() {
+		return biografia;
+	}
+
+	public void setBiografia(String biografia) {
+		this.biografia = biografia;
+	}
 
 }

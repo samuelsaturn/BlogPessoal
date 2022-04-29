@@ -36,6 +36,8 @@ public class Postagem {
 	@Size(min = 10, max = 1000, message = "O atributo texto deve conter no mínimo 10 e no máximo 1000 caracteres")
 	private String texto;
 
+	private String foto;
+
 	@Temporal(TemporalType.TIMESTAMP)
     private Date data = new java.sql.Date(System.currentTimeMillis());
 
@@ -50,9 +52,6 @@ public class Postagem {
 	@OneToMany(mappedBy = "postagem", cascade = CascadeType.REMOVE)
     private List<Comentario> comentario;
 
-    public List<Comentario> getComentarios() {
-        return comentario;
-    }
 
 	public Long getId() {
 		return id;
@@ -110,5 +109,12 @@ public class Postagem {
 		this.comentario = comentario;
 	}
 
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 
 }

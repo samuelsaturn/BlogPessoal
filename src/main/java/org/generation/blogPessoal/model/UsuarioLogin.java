@@ -13,6 +13,8 @@ public class UsuarioLogin {
 
 	private String senha;
 
+	private String bebida;
+
 	private String tipo;
 
 	private String token;
@@ -82,5 +84,15 @@ public class UsuarioLogin {
 	public void setBiografia(String biografia) {
 		this.biografia = biografia;
 	}
+
+	public String getBebida() {
+		return bebida;
+	}
+
+	public void setBebida(String bebida) {
+		this.bebida = bebida;
+	}
+
+	
 
 }

@@ -38,6 +38,9 @@ public class Postagem {
 
 	private String foto;
 
+	@Size(min = 2, max = 20)
+	private String bebida;
+
 	@Temporal(TemporalType.TIMESTAMP)
     private Date data = new java.sql.Date(System.currentTimeMillis());
 
@@ -116,5 +119,15 @@ public class Postagem {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+
+	public String getBebida() {
+		return bebida;
+	}
+
+	public void setBebida(String bebida) {
+		this.bebida = bebida;
+	}
+
+	
 
 }

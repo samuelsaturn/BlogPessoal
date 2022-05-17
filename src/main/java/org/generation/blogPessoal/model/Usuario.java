@@ -43,19 +43,23 @@ public class Usuario {
 	@NotBlank(message = "O atributo Senha é Obrigatório!")
 	@Size(min = 6, message = "A Senha deve ter no mínimo 6 caracteres")
 	private String senha;
+	
+	private String tipo;
 
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
 
-	private String tipo;
+	
 
-	public Usuario(Long id, String nome, String foto, String usuario, String senha) {
+	public Usuario(Long id, String nome, String foto, String usuario, String senha, String tipo, String biografia) {
 		this.id = id;
 		this.nome = nome;
 		this.foto = foto;
 		this.usuario = usuario;
 		this.senha = senha;
+		this.tipo = tipo;
+		this.tipo = biografia;
 	}
 
 	public Usuario() {}
@@ -101,14 +105,6 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public List<Postagem> getPostagem() {
-		return postagem;
-	}
-
-	public void setPostagem(List<Postagem> postagem) {
-		this.postagem = postagem;
-	}
-
 	public String getTipo() {
 		return tipo;
 	}
@@ -125,6 +121,12 @@ public class Usuario {
 		this.biografia = biografia;
 	}
 
-	
+	public List<Postagem> getPostagem() {
+		return postagem;
+	}
+
+	public void setPostagem(List<Postagem> postagem) {
+		this.postagem = postagem;
+	}
 	
 }

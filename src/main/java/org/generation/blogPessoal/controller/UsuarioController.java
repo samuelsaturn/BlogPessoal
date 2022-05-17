@@ -21,7 +21,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
+
+
 
 @RestController
 @RequestMapping("/usuarios")
@@ -74,14 +75,7 @@ public class UsuarioController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity deleteById(@PathVariable(value = "id") Long id) {
-		return repository.findById(id)
-				.map(resp -> {
-					repository.deleteById(id);
-					return ResponseEntity.status(204).build();
-				})
-				.orElseGet(() -> {
-					throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id Não Existe");
-				});
+	public void deleteUsuario(@PathVariable Long id) {
+		repository.deleteById(id);
 	}
 }

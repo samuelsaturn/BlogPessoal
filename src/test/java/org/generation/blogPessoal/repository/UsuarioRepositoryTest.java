@@ -26,10 +26,10 @@ public class UsuarioRepositoryTest {
 	void start() {
 		repository.deleteAll();
 		
-		repository.save(new Usuario(0L, "Samuel Mathias", "foto", "samuel@gmail.com", "123456"));
-		repository.save(new Usuario(0L, "Taldo Mathias", "foto", "taldo@gmail.com", "123456"));
-		repository.save(new Usuario(0L, "Laura Mathias", "foto", "lauro@gmail.com", "123456"));
-		repository.save(new Usuario(0L, "Rebecca Silva", "foto", "rebecca@gmail.com", "123456"));
+		repository.save(new Usuario(0L, "Samuel Mathias", "foto", "samuel@gmail.com", "123456", "adm", ""));
+		repository.save(new Usuario(0L, "Taldo Mathias", "foto", "taldo@gmail.com", "123456", "adm", ""));
+		repository.save(new Usuario(0L, "Laura Mathias", "foto", "lauro@gmail.com", "123456", "adm", ""));
+		repository.save(new Usuario(0L, "Rebecca Silva", "foto", "rebecca@gmail.com", "123456", "adm", ""));
 		
 	}
 
